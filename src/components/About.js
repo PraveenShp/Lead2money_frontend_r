@@ -5,7 +5,6 @@ import Footer from '../layouts/Footer'
 import { useLoader } from '../context/LoaderContext';
 import Header from '../layouts/Header';
 
-
 const About = () => {
  
     const [useAboutUs, setAboutUs] = useState(null);
