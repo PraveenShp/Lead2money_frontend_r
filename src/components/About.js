@@ -22,7 +22,7 @@ const About = () => {
       setAllAboutUs(response.data.alldata);
     } catch (error) {
       console.error("Error occurred:", error.response ? error.response.data : error.message);
-      // toast.error("An error occurred while processing the payment.");
+      toast.error("An error occurred while processing the payment.");
     }finally{
       setIsLoading(false);
     }

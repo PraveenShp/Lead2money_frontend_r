@@ -61,6 +61,9 @@ const ProductDetails = () => {
   
     return (
     <>
+
+      <Header/>
+
     {/* Products */}
         <section className="agent-section pad-tb" id="products">
         <div className="container">

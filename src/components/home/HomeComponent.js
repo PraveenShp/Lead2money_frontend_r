@@ -596,8 +596,10 @@ const HomeComponent = () => {
                     {useAllAllTurn_Your_Network && useAllAllTurn_Your_Network.length > 0 ? (
                       useAllAllTurn_Your_Network.map((row, index) => (
                         <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index} >
+
                           <img className="d-block w-100" src={`${apiConfig.apiImgUrl}/${row.images}`} 
                           alt={`Step ${row.images || 'Not Available'}`} style={{ objectFit: "cover", height: "100%" }}/>
+                          {/* <img className="d-block w-100" src="/images/hero/beautiful-curly-girl.png" style={{ objectFit: "cover", height: "100%" }}/> */}
                         </div>
                       ))
                     ) : (
@@ -791,7 +793,7 @@ const HomeComponent = () => {
               {useAllLoansServicePlan && useAllLoansServicePlan.length > 0 ? (
                 useAllLoansServicePlan.map((row, index) => (
                 <div className="servicecard up-hor" key={index}>
-                  <a href="#">
+                  <a href={row.page_title2}>
                     <img src={`${apiConfig.apiImgUrl}/${row.images}`}
                         alt={`Step ${row.images || "Not Available"}`} />
                     <p>
@@ -822,7 +824,7 @@ const HomeComponent = () => {
               {useAllCreditCardPlan && useAllCreditCardPlan.length > 0 ? (
                 useAllCreditCardPlan.map((row, index) => (
                 <div className="servicecard up-hor" key={index}>
-                  <a href="#">
+                  <a href="/leadweb/credit-cards">
                     <img src={`${apiConfig.apiImgUrl}/${row.images}`}
                         alt={`Step ${row.images || "Not Available"}`} />
                     <p>
@@ -903,7 +905,6 @@ const HomeComponent = () => {
             </div>
           </div>
         </div>
-
 
         </div>
       </section>
@@ -1073,7 +1074,7 @@ const HomeComponent = () => {
         </div>
       </section> */}
 
-
+      {/* Why Choose Lead2money */}
       <section className="agent-section pad-tb" id="mutual-fund">
       <div className="container">
         <div className="row justify-content-center text-center">
@@ -1111,286 +1112,282 @@ const HomeComponent = () => {
       </div>
     </section>
 
-      {/* Join the Lead2Money Community */}
-      <div
-        className="cta-section pad-tb bg-fixed-img"
-        data-parallax="scroll"
-        data-speed="0.5"
-        data-image-src="/image/hero-bg.jpg"
-      >
-        <div className="container">
-          <div className="row justify-content-center text-center">
-            <div className="col-lg-8">
-              <div className="cta-heading">
-                <h2
-                  className="mb20 text-w"
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                >
-                  Join the Lead2Money Community: Become a Member Today!
-                </h2>
-                <p className="text-w" data-aos="fade-up" data-aos-delay="300">
-                  With Lead2Money, you’re not just signing up for a
-                  platform—you’re joining a community of driven individuals and
-                  businesses who are turning connections into income. Whether
-                  you're looking to generate leads or explore new product
-                  opportunities, we provide the tools and support you need to
-                  succeed.
-                  <br />
-                  <br />
-                  Don’t wait—start your journey to success today.
-                </p>
-                <a
-                  href="#modal"
-                  data-toggle="modal"
-                  data-target="#modal_aside_right"
-                  className="btnpora btn-rd3 mt40 noshadow"
-                  data-aos="fade-up"
-                  data-aos-delay="500"
-                >
-                  {" "}
-                  Sign Up
+    {/* Join the Lead2Money Community */}
+    <div
+      className="cta-section pad-tb bg-fixed-img"
+      data-parallax="scroll"
+      data-speed="0.5"
+      data-image-src="/image/hero-bg.jpg"
+    >
+      <div className="container">
+        <div className="row justify-content-center text-center">
+          <div className="col-lg-8">
+            <div className="cta-heading">
+              <h2
+                className="mb20 text-w"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                Join the Lead2Money Community: Become a Member Today!
+              </h2>
+              <p className="text-w" data-aos="fade-up" data-aos-delay="300">
+                With Lead2Money, you’re not just signing up for a
+                platform—you’re joining a community of driven individuals and
+                businesses who are turning connections into income. Whether
+                you're looking to generate leads or explore new product
+                opportunities, we provide the tools and support you need to
+                succeed.
+                <br />
+                <br />
+                Don’t wait—start your journey to success today.
+              </p>
+              <a
+                href="/leadweb/signup"
+                className="btnpora btn-rd3 mt40 noshadow"
+              >
+                {" "}
+                Sign Up
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Meet The Agents */}
+    {/* <section className="agent-section pad-tb" id="agent">
+      <div className="container">
+        <div className="row justify-content-center text-center">
+          <div className="col-lg-6">
+            <div className="common-heading">
+              <h2 className="mb20" data-aos="fade-up" data-aos-delay="100">
+                Meet The <em>Agents</em>
+              </h2>
+              <p data-aos="fade-up" data-aos-delay="300">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="row mt30">
+          <div
+            className="col-lg-3 col-6 mt30"
+            data-aos="fade-In"
+            data-aos-delay="100"
+          >
+            <div className="full-image-card hover-scale">
+              <div className="image-div">
+                <a href="#">
+                  <img
+                    src="images/agents/team-1.jpg"
+                    alt="team"
+                    className="img-fluid"
+                  />
                 </a>
+              </div>
+              <div className="info-text-block">
+                <h5>
+                  <a href="#">Shakita Daoust</a>
+                </h5>
+                <p>Insurance Agent</p>
+                <div className="social-links-">
+                  <a href="#" target="blank">
+                    <i className="fab fa-facebook-f"></i>{" "}
+                  </a>
+                  <a href="#" target="blank">
+                    <i className="fab fa-twitter"></i>{" "}
+                  </a>
+                  <a href="#" target="blank">
+                    <i className="fab fa-linkedin-in"></i>{" "}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-lg-3 col-6 mt30"
+            data-aos="fade-In"
+            data-aos-delay="300"
+          >
+            <div className="full-image-card hover-scale">
+              <div className="image-div">
+                <a href="#">
+                  <img
+                    src="images/agents/team-2.jpg"
+                    alt="team"
+                    className="img-fluid"
+                  />
+                </a>
+              </div>
+              <div className="info-text-block">
+                <h5>
+                  <a href="#">Gerard Licari</a>
+                </h5>
+                <p>Insurance Agent</p>
+                <div className="social-links-">
+                  <a href="#" target="blank">
+                    <i className="fab fa-facebook-f"></i>{" "}
+                  </a>
+                  <a href="#" target="blank">
+                    <i className="fab fa-twitter"></i>{" "}
+                  </a>
+                  <a href="#" target="blank">
+                    <i className="fab fa-linkedin-in"></i>{" "}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-lg-3 col-6 mt30"
+            data-aos="fade-In"
+            data-aos-delay="500"
+          >
+            <div className="full-image-card hover-scale">
+              <div className="image-div">
+                <a href="#">
+                  <img
+                    src="images/agents/team-3.jpg"
+                    alt="team"
+                    className="img-fluid"
+                  />
+                </a>
+              </div>
+              <div className="info-text-block">
+                <h5>
+                  <a href="#">Cary Montgomery</a>
+                </h5>
+                <p>Insurance Agent</p>
+                <div className="social-links-">
+                  <a href="#" target="blank">
+                    <i className="fab fa-facebook-f"></i>{" "}
+                  </a>
+                  <a href="#" target="blank">
+                    <i className="fab fa-twitter"></i>{" "}
+                  </a>
+                  <a href="#" target="blank">
+                    <i className="fab fa-linkedin-in"></i>{" "}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="col-lg-3 col-6 mt30"
+            data-aos="fade-In"
+            data-aos-delay="700"
+          >
+            <div className="full-image-card hover-scale">
+              <div className="image-div">
+                <a href="#">
+                  <img
+                    src="images/agents/team-4.jpg"
+                    alt="team"
+                    className="img-fluid"
+                  />
+                </a>
+              </div>
+              <div className="info-text-block">
+                <h5>
+                  <a href="#">Herman Running</a>
+                </h5>
+                <p>Insurance Agent</p>
+                <div className="social-links-">
+                  <a href="#" target="blank">
+                    <i className="fab fa-facebook-f"></i>{" "}
+                  </a>
+                  <a href="#" target="blank">
+                    <i className="fab fa-twitter"></i>{" "}
+                  </a>
+                  <a href="#" target="blank">
+                    <i className="fab fa-linkedin-in"></i>{" "}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Meet The Agents */}
-      {/* <section className="agent-section pad-tb" id="agent">
-        <div className="container">
-          <div className="row justify-content-center text-center">
+    </section> */}
+            
+    {/*Testimonials  */}
+    <section className="reviews-section pad-tb review-bg2" id="review">
+      <div className="container">
+          <div className="row">
             <div className="col-lg-6">
-              <div className="common-heading">
-                <h2 className="mb20" data-aos="fade-up" data-aos-delay="100">
-                  Meet The <em>Agents</em>
-                </h2>
-                <p data-aos="fade-up" data-aos-delay="300">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
+                <div className="comon-heading">
+                  <h2 className="mb20">Our <em>Happy</em> Customers <em>{useTestimonials ? useTestimonials.page_name : ''}</em></h2>
+                  <p>{ useTestimonials ? useTestimonials.page_name_title : ''}</p>
+                </div>
+                <h5 className="mt40">{useTestimonials ? useTestimonials.page_name_title2 : ''}</h5>
+                <ul className="overallrating mt20">
+                  {[1, 2, 3, 4, 5].map((star, index) => (
+                    <li key={index}>
+                      <a href="javascript:void(0)" className={index < 3 ? "chked" : ""}>
+                        <i className={`fas fa-star ${index < 3 ? "fa fa-star" : "fa-star-half-alt"}`} aria-hidden="true" ></i>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
             </div>
-          </div>
-          <div className="row mt30">
-            <div
-              className="col-lg-3 col-6 mt30"
-              data-aos="fade-In"
-              data-aos-delay="100"
-            >
-              <div className="full-image-card hover-scale">
-                <div className="image-div">
-                  <a href="#">
-                    <img
-                      src="images/agents/team-1.jpg"
-                      alt="team"
-                      className="img-fluid"
-                    />
-                  </a>
-                </div>
-                <div className="info-text-block">
-                  <h5>
-                    <a href="#">Shakita Daoust</a>
-                  </h5>
-                  <p>Insurance Agent</p>
-                  <div className="social-links-">
-                    <a href="#" target="blank">
-                      <i className="fab fa-facebook-f"></i>{" "}
-                    </a>
-                    <a href="#" target="blank">
-                      <i className="fab fa-twitter"></i>{" "}
-                    </a>
-                    <a href="#" target="blank">
-                      <i className="fab fa-linkedin-in"></i>{" "}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-6 mt30"
-              data-aos="fade-In"
-              data-aos-delay="300"
-            >
-              <div className="full-image-card hover-scale">
-                <div className="image-div">
-                  <a href="#">
-                    <img
-                      src="images/agents/team-2.jpg"
-                      alt="team"
-                      className="img-fluid"
-                    />
-                  </a>
-                </div>
-                <div className="info-text-block">
-                  <h5>
-                    <a href="#">Gerard Licari</a>
-                  </h5>
-                  <p>Insurance Agent</p>
-                  <div className="social-links-">
-                    <a href="#" target="blank">
-                      <i className="fab fa-facebook-f"></i>{" "}
-                    </a>
-                    <a href="#" target="blank">
-                      <i className="fab fa-twitter"></i>{" "}
-                    </a>
-                    <a href="#" target="blank">
-                      <i className="fab fa-linkedin-in"></i>{" "}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-6 mt30"
-              data-aos="fade-In"
-              data-aos-delay="500"
-            >
-              <div className="full-image-card hover-scale">
-                <div className="image-div">
-                  <a href="#">
-                    <img
-                      src="images/agents/team-3.jpg"
-                      alt="team"
-                      className="img-fluid"
-                    />
-                  </a>
-                </div>
-                <div className="info-text-block">
-                  <h5>
-                    <a href="#">Cary Montgomery</a>
-                  </h5>
-                  <p>Insurance Agent</p>
-                  <div className="social-links-">
-                    <a href="#" target="blank">
-                      <i className="fab fa-facebook-f"></i>{" "}
-                    </a>
-                    <a href="#" target="blank">
-                      <i className="fab fa-twitter"></i>{" "}
-                    </a>
-                    <a href="#" target="blank">
-                      <i className="fab fa-linkedin-in"></i>{" "}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-6 mt30"
-              data-aos="fade-In"
-              data-aos-delay="700"
-            >
-              <div className="full-image-card hover-scale">
-                <div className="image-div">
-                  <a href="#">
-                    <img
-                      src="images/agents/team-4.jpg"
-                      alt="team"
-                      className="img-fluid"
-                    />
-                  </a>
-                </div>
-                <div className="info-text-block">
-                  <h5>
-                    <a href="#">Herman Running</a>
-                  </h5>
-                  <p>Insurance Agent</p>
-                  <div className="social-links-">
-                    <a href="#" target="blank">
-                      <i className="fab fa-facebook-f"></i>{" "}
-                    </a>
-                    <a href="#" target="blank">
-                      <i className="fab fa-twitter"></i>{" "}
-                    </a>
-                    <a href="#" target="blank">
-                      <i className="fab fa-linkedin-in"></i>{" "}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-              
-      {/*Testimonials  */}
-      <section className="reviews-section pad-tb review-bg2" id="review">
-        <div className="container">
-            <div className="row">
-              <div className="col-lg-6">
-                  <div className="comon-heading">
-                    <h2 className="mb20">Our <em>Happy</em> Customers <em>{useTestimonials ? useTestimonials.page_name : ''}</em></h2>
-                    <p>{ useTestimonials ? useTestimonials.page_name_title : ''}</p>
-                  </div>
-                  <h5 className="mt40">{useTestimonials ? useTestimonials.page_name_title2 : ''}</h5>
-                  <ul className="overallrating mt20">
-                    {[1, 2, 3, 4, 5].map((star, index) => (
-                      <li key={index}>
-                        <a href="javascript:void(0)" className={index < 3 ? "chked" : ""}>
-                          <i className={`fas fa-star ${index < 3 ? "fa fa-star" : "fa-star-half-alt"}`} aria-hidden="true" ></i>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-              </div>
-                <div className="col-lg-6 v-center">
-                  <div id="carouselTestimonials" className="carousel slide" data-ride="carousel" data-interval="3000">
-                    <ol className="carousel-indicators">
-                      <li data-target="#carouselTestimonials" data-slide-to="0" className="active"></li>
-                      <li data-target="#carouselTestimonials" data-slide-to="1"></li>
-                      <li data-target="#carouselTestimonials" data-slide-to="2"></li>
-                    </ol>
-                    <div className="carousel-inner" style={{ height: "300px", overflow: "hidden" }}>
-                    {useAllTestimonials && useAllTestimonials.length > 0 ? (
-                      useAllTestimonials.map((row, index) => (
-                      <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index} >
-                        <div className="-client-details-">
-                          <div className="-reviewr">
-                            <img src={`${apiConfig.apiImgUrl}/${row.images}`}
-                              alt={`Step ${row.images || 'Not Available'}`} className="img-fluid" />
-                          </div>
-                          <div className="reviewer-text">
-                            <h5>{row.page_title1}</h5>
-                            <p>{row.page_title2}</p>
-                            <div className="star-rate">
-                              <ul>
-                                <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star" aria-hidden="true"></i></a></li>
-                                <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star" aria-hidden="true"></i></a></li>
-                                <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star" aria-hidden="true"></i></a></li>
-                                <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star" aria-hidden="true"></i></a></li>
-                                <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star-half-alt"></i></a></li>
-                                <li><a href="javascript:void(0)">4.2</a></li>
-                              </ul>
-                            </div>
-                          </div>
+              <div className="col-lg-6 v-center">
+                <div id="carouselTestimonials" className="carousel slide" data-ride="carousel" data-interval="3000">
+                  <ol className="carousel-indicators">
+                    <li data-target="#carouselTestimonials" data-slide-to="0" className="active"></li>
+                    <li data-target="#carouselTestimonials" data-slide-to="1"></li>
+                    <li data-target="#carouselTestimonials" data-slide-to="2"></li>
+                  </ol>
+                  <div className="carousel-inner" style={{ height: "300px", overflow: "hidden" }}>
+                  {useAllTestimonials && useAllTestimonials.length > 0 ? (
+                    useAllTestimonials.map((row, index) => (
+                    <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={index} >
+                      <div className="-client-details-">
+                        <div className="-reviewr">
+                          <img src={`${apiConfig.apiImgUrl}/${row.images}`}
+                            alt={`Step ${row.images || 'Not Available'}`} className="img-fluid" />
                         </div>
-                        <div className="review-text pb0 pt30">
-                          <p>
-                          {row.page_value1}
-                          </p>
+                        <div className="reviewer-text">
+                          <h5>{row.page_title1}</h5>
+                          <p>{row.page_title2}</p>
+                          <div className="star-rate">
+                            <ul>
+                              <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star" aria-hidden="true"></i></a></li>
+                              <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star" aria-hidden="true"></i></a></li>
+                              <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star" aria-hidden="true"></i></a></li>
+                              <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star" aria-hidden="true"></i></a></li>
+                              <li><a href="javascript:void(0)" className="chked"><i className="fas fa-star-half-alt"></i></a></li>
+                              <li><a href="javascript:void(0)">4.2</a></li>
+                            </ul>
+                          </div>
                         </div>
                       </div>
-                        ))
-                      ) : (
-                        <div className="text-center">
-                          <p>No data available</p>
-                        </div>
-                      )}
+                      <div className="review-text pb0 pt30">
+                        <p>
+                        {row.page_value1}
+                        </p>
+                      </div>
                     </div>
-                      <a className="carousel-control-prev" href="#carouselTestimonials" role="button" data-slide="prev">
-                      <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span className="sr-only">Previous</span>
-                    </a>
-                    <a className="carousel-control-next" href="#carouselTestimonials" role="button" data-slide="next">
-                      <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span className="sr-only">Next</span>
-                    </a>
+                      ))
+                    ) : (
+                      <div className="text-center">
+                        <p>No data available</p>
+                      </div>
+                    )}
                   </div>
+                    <a className="carousel-control-prev" href="#carouselTestimonials" role="button" data-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Previous</span>
+                  </a>
+                  <a className="carousel-control-next" href="#carouselTestimonials" role="button" data-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Next</span>
+                  </a>
                 </div>
-            </div>
-        </div>
-      </section>
+              </div>
+          </div>
+      </div>
+    </section>
       
     {/* mutual fund  Lead Generation Services */}
     <section className="agent-section pad-tb" id="mutual-fund">
@@ -1432,307 +1429,307 @@ const HomeComponent = () => {
     </section>
 
 
-      {/* Why Choose Lead2Money? Mutul Fund */}
-      <section className="agent-section pad-tb" id="mutual-fund">
-        <div className="container">
-          <div className="row justify-content-center text-center">
-            <div className="col-lg-11 mt-5">
-                <div className="common-heading">
-                  <h4 className="mb20" data-aos="fade-up" data-aos-delay="100">
-                    <em>{useOurLeadGeneration ? useOurLeadGeneration.page_name_title : ''}</em>
-                  <br/>
-                  </h4>
-                  <h2 className="mb20" data-aos="fade-up" data-aos-delay="100">
-                    {useOurLeadGeneration ? useOurLeadGeneration.page_name : ''}
-                  </h2>
-
-                  <div className="row divrightbdr"> 
-                    { useAllOurLeadGeneration.map((row, index) => (
-                      <div className="col-lg-6">
-                          <div className="steps-div  mt30" data-aos-delay="100" >
-                            <div className="steps-icons-1">
-                              <img src="/images/icons/choice.png" alt="steps" />
-                            </div>
-                            <h4 className="mb10">{row.page_title1}</h4>
-                            <p>
-                            {row.page_value1}
-                            </p>
-                          </div>
-                      </div>
-                    ))}
-
-                    {/* <div className="steps-div mt30" data-aos="fade-up" data-aos-delay="300" >
-                      <div className="steps-icons-1">
-                        {" "}
-                        <img
-                          src="/images/icons/credit-card.png"
-                          alt="steps"
-                        />{" "}
-                      </div>
-                      <h4 className="mb10">Diverse Investment Options </h4>
-                      <p>
-                      Access leads interested in a variety of mutual funds, allowing you to offer tailored solutions.
-                      </p>
-                    </div> */}
-
-                  {/* <div className="col-lg-6 mt60 m-m0">
-                    <div
-                      className="steps-div mt30"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      <div className="steps-icons-1">
-                        {" "}
-                        <img src="/images/icons/easy.png" alt="steps" />{" "}
-                      </div>
-                      <h4 className="mb10">
-                      Streamlined Process</h4>
-                      <p>
-                      Our platform simplifies the lead generation process, giving you more time to focus on advising your clients.
-                      </p>
-                    </div>
-                    <div
-                      className="steps-div mt30"
-                      data-aos="fade-up"
-                      data-aos-delay="500"
-                    >
-                      <div className="steps-icons-1">
-                        {" "}
-                        <img src="/images/icons/customers.png" alt="steps" />{" "}
-                      </div>
-                      <h4 className="mb10">
-                      Proven Success</h4>
-                      <p>
-                      Join a network of financial professionals who have successfully expanded their client base through Lead2Money.
-                      </p>
-                    </div>
-                  </div> */}
-                </div>
-                </div>
-            </div>
-        </div>
-      </div>
-      </section>
-
-      {/* Frequently Asked Questions */}
-      <section className="faq-section pad-tb ">
-        <div className="container">
-          <div className="row justify-content-center text-center">
-            <div className="col-lg-8">
+    {/* Why Choose Lead2Money? Mutul Fund */}
+    <section className="agent-section pad-tb" id="mutual-fund">
+      <div className="container">
+        <div className="row justify-content-center text-center">
+          <div className="col-lg-11 mt-5">
               <div className="common-heading">
-                <h2 data-aos="fade-up" data-aos-delay="100">
-                 <em>{useQuestions ? useQuestions.page_name : ''}</em> 
+                <h4 className="mb20" data-aos="fade-up" data-aos-delay="100">
+                  <em>{useOurLeadGeneration ? useOurLeadGeneration.page_name_title : ''}</em>
+                <br/>
+                </h4>
+                <h2 className="mb20" data-aos="fade-up" data-aos-delay="100">
+                  {useOurLeadGeneration ? useOurLeadGeneration.page_name : ''}
                 </h2>
-                <p>{useQuestions ? useQuestions.page_name_title : ''}</p>
-              </div>
-            </div>
-          </div>
-          <div className="row justify-content-center mt60">
-            <div className="col-lg-8">
-              <div id="accordion3" className="accordion">
-                {useAllQuestions.map((row, index) => (
-                    <div key={index} className="card-2">
-                      <div className="card-header" id={`heading-${index}`}>
-                        <button
-                          className="btn btn-link btn-block text-left"
-                          type="button"
-                          onClick={() => toggleAccordion(index)} // Call toggleAccordion with current index
-                        >
-                          {/* Conditionally render "+" or "-" based on whether the current accordion is open */}
-                          {row.page_title1}
-                          {" "}
-                          <span className="mr-2">
-                            {openIndex === index ? "-" : "+"}
-                          </span>
-                        </button>
-                      </div>
-                      <div
-                        id={`collapse-${index}`}
-                        className={`card-body p0 collapse ${openIndex === index ? "show" : ""}`}
-                        aria-labelledby={`heading-${index}`} 
-                        data-parent="#accordion3"
-                      >
-                        <div className="data-reqs">
-                          <p>{row.page_value1}</p>
+
+                <div className="row divrightbdr"> 
+                  { useAllOurLeadGeneration.map((row, index) => (
+                    <div className="col-lg-6">
+                        <div className="steps-div  mt30" data-aos-delay="100" >
+                          <div className="steps-icons-1">
+                            <img src="/images/icons/choice.png" alt="steps" />
+                          </div>
+                          <h4 className="mb10">{row.page_title1}</h4>
+                          <p>
+                          {row.page_value1}
+                          </p>
                         </div>
-                      </div>
                     </div>
                   ))}
-              
-                {/* <div className="card-2 mt10">
-                  <div className="card-header" id="acc2">
-                    <button
-                      className="btn btn-link btn-block text-left acc-icon collapsed"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapse-2"
-                      aria-expanded="false"
-                      aria-controls="collapse-2"
-                    >
-                      Is it possible to lose money in mutual funds?
-                    </button>
+
+                  {/* <div className="steps-div mt30" data-aos="fade-up" data-aos-delay="300" >
+                    <div className="steps-icons-1">
+                      {" "}
+                      <img
+                        src="/images/icons/credit-card.png"
+                        alt="steps"
+                      />{" "}
+                    </div>
+                    <h4 className="mb10">Diverse Investment Options </h4>
+                    <p>
+                    Access leads interested in a variety of mutual funds, allowing you to offer tailored solutions.
+                    </p>
+                  </div> */}
+
+                {/* <div className="col-lg-6 mt60 m-m0">
+                  <div
+                    className="steps-div mt30"
+                    data-aos="fade-up"
+                    data-aos-delay="200"
+                  >
+                    <div className="steps-icons-1">
+                      {" "}
+                      <img src="/images/icons/easy.png" alt="steps" />{" "}
+                    </div>
+                    <h4 className="mb10">
+                    Streamlined Process</h4>
+                    <p>
+                    Our platform simplifies the lead generation process, giving you more time to focus on advising your clients.
+                    </p>
                   </div>
                   <div
-                    id="collapse-2"
-                    className="card-body p0 collapse"
-                    aria-labelledby="acc2"
-                    data-parent="#accordion3"
+                    className="steps-div mt30"
+                    data-aos="fade-up"
+                    data-aos-delay="500"
                   >
-                    <div className="data-reqs">
-                      <p>
-                        The returns from a mutual fund are largely influenced by
-                        the performance of the underlying securities and the
-                        overall market conditions. Due to this volatility, there
-                        is no guarantee that you will not incur losses in mutual
-                        funds. Experts advise understanding how mutual funds
-                        operate before investing in them.{" "}
-                      </p>
+                    <div className="steps-icons-1">
+                      {" "}
+                      <img src="/images/icons/customers.png" alt="steps" />{" "}
                     </div>
-                  </div>
-                </div>
-                <div className="card-2 mt10">
-                  <div className="card-header" id="acc3">
-                    <button
-                      className="btn btn-link btn-block text-left acc-icon collapsed"
-                      type="button"
-                      data-toggle="collapse"
-                      data-target="#collapse-3"
-                      aria-expanded="false"
-                      aria-controls="collapse-3"
-                    >
-                      What factors should you consider when choosing the best
-                      mutual fund scheme?
-                    </button>
-                  </div>
-                  <div
-                    id="collapse-3"
-                    className="card-body p0 collapse"
-                    aria-labelledby="acc3"
-                    data-parent="#accordion3"
-                  >
-                    <div className="data-reqs">
-                      <p>
-                        Before choosing a mutual fund scheme one should look for
-                        the following factors like performance, AMC track
-                        record, the fund manager’s experience, performance
-                        against category, expense ratio, the scheme’s Assets
-                        Under Management (AUM), etc.{" "}
-                      </p>
-                    </div>
+                    <h4 className="mb10">
+                    Proven Success</h4>
+                    <p>
+                    Join a network of financial professionals who have successfully expanded their client base through Lead2Money.
+                    </p>
                   </div>
                 </div> */}
               </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    </section>
+
+    {/* Frequently Asked Questions */}
+    <section className="faq-section pad-tb ">
+      <div className="container">
+        <div className="row justify-content-center text-center">
+          <div className="col-lg-8">
+            <div className="common-heading">
+              <h2 data-aos="fade-up" data-aos-delay="100">
+                <em>{useQuestions ? useQuestions.page_name : ''}</em> 
+              </h2>
+              <p>{useQuestions ? useQuestions.page_name_title : ''}</p>
             </div>
           </div>
         </div>
-      </section>
-
-      {/* <!--contact popup start-->*/}
-      <div id="modal_aside_right" class="modal fixed-left fade" role="dialog" >
-        <div class="modal-dialog modal-dialog-aside" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Express Your Interest!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close" id='CloseModel'>
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-block border0 noshadow mt30">
-              <form onSubmit={FormSubmit}>
-                <div className="row">
-                  <div className="form-group col-sm-12">
-                    <input
-                      type="text"
-                      onChange={handleInputChange}
-                      value={formState.name}
-                      name="name"
-                      className={`form-control ${fieldErrors.name ? 'border border-danger' : 'border border-gray'}`}
-                      placeholder="Enter name"
-                    />
+        <div className="row justify-content-center mt60">
+          <div className="col-lg-8">
+            <div id="accordion3" className="accordion">
+              {useAllQuestions.map((row, index) => (
+                  <div key={index} className="card-2">
+                    <div className="card-header" id={`heading-${index}`}>
+                      <button
+                        className="btn btn-link btn-block text-left"
+                        type="button"
+                        onClick={() => toggleAccordion(index)} // Call toggleAccordion with current index
+                      >
+                        {/* Conditionally render "+" or "-" based on whether the current accordion is open */}
+                        {row.page_title1}
+                        {" "}
+                        <span className="mr-2">
+                          {openIndex === index ? "-" : "+"}
+                        </span>
+                      </button>
+                    </div>
+                    <div
+                      id={`collapse-${index}`}
+                      className={`card-body p0 collapse ${openIndex === index ? "show" : ""}`}
+                      aria-labelledby={`heading-${index}`} 
+                      data-parent="#accordion3"
+                    >
+                      <div className="data-reqs">
+                        <p>{row.page_value1}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div className="form-group col-sm-12">
-                    <input
-                      type="email"
-                      onChange={handleInputChange}
-                      value={formState.email}
-                      name="email"
-                      className={`form-control ${fieldErrors.email ? 'border border-danger' : 'border border-gray'}`}
-                      placeholder="Enter email"
-                    />
-                  </div>
-                  <div className="form-group col-sm-12">
-                    <input
-                      type="text"
-                      onChange={handleInputChange}
-                      value={formState.mobile}
-                      name="mobile"
-                      maxLength={10}
-                      className={`form-control ${fieldErrors.mobile ? 'border border-danger' : 'border border-gray'}`}
-                      placeholder="Enter mobile"
-                    />
-                  </div>
-                  <div className="form-group col-sm-12">
-                    <textarea
-                      onChange={handleInputChange}
-                      value={formState.message}
-                      name="message"
-                      className={`form-control ${fieldErrors.message ? 'border border-danger' : 'border border-gray'}`}
-                      rows="5"
-                      placeholder="Enter your message"
-                    />
+                ))}
+            
+              {/* <div className="card-2 mt10">
+                <div className="card-header" id="acc2">
+                  <button
+                    className="btn btn-link btn-block text-left acc-icon collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapse-2"
+                    aria-expanded="false"
+                    aria-controls="collapse-2"
+                  >
+                    Is it possible to lose money in mutual funds?
+                  </button>
+                </div>
+                <div
+                  id="collapse-2"
+                  className="card-body p0 collapse"
+                  aria-labelledby="acc2"
+                  data-parent="#accordion3"
+                >
+                  <div className="data-reqs">
+                    <p>
+                      The returns from a mutual fund are largely influenced by
+                      the performance of the underlying securities and the
+                      overall market conditions. Due to this volatility, there
+                      is no guarantee that you will not incur losses in mutual
+                      funds. Experts advise understanding how mutual funds
+                      operate before investing in them.{" "}
+                    </p>
                   </div>
                 </div>
-
-                {error && <div className="text-danger">{error}</div>}
-
-                <button type="submit" className="btn-rd w-100">
-                  Submit
-                </button>
-              </form>
-                {/* <div class="form-btm-set">
-                  <h5>We Deliver</h5>
-                  <div class="icon-setss mt20">
-                    <div class="icon-rows">
-                      <div class="icon-imgg">
-                        <img src="/images/icons/money.svg" alt="#" />
-                      </div>
-                      <div class="icon-txt">
-                        <p>Best Price</p>
-                      </div>
-                    </div>
-                    <div class="icon-rows">
-                      <div class="icon-imgg">
-                        <img src="/images/icons/quality.svg" alt="#" />
-                      </div>
-                      <div class="icon-txt">
-                        <p>Quality Service</p>
-                      </div>
-                    </div>
-                    <div class="icon-rows">
-                      <div class="icon-imgg">
-                        <img src="/images/icons/call-agent.svg" alt="#" />
-                      </div>
-                      <div class="icon-txt">
-                        <p>Good Support</p>
-                      </div>
-                    </div>
-                    <div class="icon-rows">
-                      <div class="icon-imgg">
-                        <img src="/images/icons/satisfaction.svg" alt="#" />
-                      </div>
-                      <div class="icon-txt">
-                        <p>Satisfaction</p>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
               </div>
+              <div className="card-2 mt10">
+                <div className="card-header" id="acc3">
+                  <button
+                    className="btn btn-link btn-block text-left acc-icon collapsed"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#collapse-3"
+                    aria-expanded="false"
+                    aria-controls="collapse-3"
+                  >
+                    What factors should you consider when choosing the best
+                    mutual fund scheme?
+                  </button>
+                </div>
+                <div
+                  id="collapse-3"
+                  className="card-body p0 collapse"
+                  aria-labelledby="acc3"
+                  data-parent="#accordion3"
+                >
+                  <div className="data-reqs">
+                    <p>
+                      Before choosing a mutual fund scheme one should look for
+                      the following factors like performance, AMC track
+                      record, the fund manager’s experience, performance
+                      against category, expense ratio, the scheme’s Assets
+                      Under Management (AUM), etc.{" "}
+                    </p>
+                  </div>
+                </div>
+              </div> */}
             </div>
           </div>
         </div>
       </div>
-      {/* <!--contact popup end--> */}
+    </section>
+
+    {/* <!--contact popup start-->*/}
+    <div id="modal_aside_right" class="modal fixed-left fade" role="dialog" >
+      <div class="modal-dialog modal-dialog-aside" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Express Your Interest!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id='CloseModel'>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-block border0 noshadow mt30">
+            <form onSubmit={FormSubmit}>
+              <div className="row">
+                <div className="form-group col-sm-12">
+                  <input
+                    type="text"
+                    onChange={handleInputChange}
+                    value={formState.name}
+                    name="name"
+                    className={`form-control ${fieldErrors.name ? 'border border-danger' : 'border border-gray'}`}
+                    placeholder="Enter name"
+                  />
+                </div>
+                <div className="form-group col-sm-12">
+                  <input
+                    type="email"
+                    onChange={handleInputChange}
+                    value={formState.email}
+                    name="email"
+                    className={`form-control ${fieldErrors.email ? 'border border-danger' : 'border border-gray'}`}
+                    placeholder="Enter email"
+                  />
+                </div>
+                <div className="form-group col-sm-12">
+                  <input
+                    type="text"
+                    onChange={handleInputChange}
+                    value={formState.mobile}
+                    name="mobile"
+                    maxLength={10}
+                    className={`form-control ${fieldErrors.mobile ? 'border border-danger' : 'border border-gray'}`}
+                    placeholder="Enter mobile"
+                  />
+                </div>
+                <div className="form-group col-sm-12">
+                  <textarea
+                    onChange={handleInputChange}
+                    value={formState.message}
+                    name="message"
+                    className={`form-control ${fieldErrors.message ? 'border border-danger' : 'border border-gray'}`}
+                    rows="5"
+                    placeholder="Enter your message"
+                  />
+                </div>
+              </div>
+
+              {error && <div className="text-danger">{error}</div>}
+
+              <button type="submit" className="btn-rd w-100">
+                Submit
+              </button>
+            </form>
+              {/* <div class="form-btm-set">
+                <h5>We Deliver</h5>
+                <div class="icon-setss mt20">
+                  <div class="icon-rows">
+                    <div class="icon-imgg">
+                      <img src="/images/icons/money.svg" alt="#" />
+                    </div>
+                    <div class="icon-txt">
+                      <p>Best Price</p>
+                    </div>
+                  </div>
+                  <div class="icon-rows">
+                    <div class="icon-imgg">
+                      <img src="/images/icons/quality.svg" alt="#" />
+                    </div>
+                    <div class="icon-txt">
+                      <p>Quality Service</p>
+                    </div>
+                  </div>
+                  <div class="icon-rows">
+                    <div class="icon-imgg">
+                      <img src="/images/icons/call-agent.svg" alt="#" />
+                    </div>
+                    <div class="icon-txt">
+                      <p>Good Support</p>
+                    </div>
+                  </div>
+                  <div class="icon-rows">
+                    <div class="icon-imgg">
+                      <img src="/images/icons/satisfaction.svg" alt="#" />
+                    </div>
+                    <div class="icon-txt">
+                      <p>Satisfaction</p>
+                    </div>
+                  </div>
+                </div>
+              </div> */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {/* <!--contact popup end--> */}
     </>
    )
 }

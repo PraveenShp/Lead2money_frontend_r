@@ -5,11 +5,8 @@ import Header from "../layouts/Header";
 import { redirect, useParams } from 'next/navigation';
 import { fetchData ,apiConfig} from '@/pages/fetchData';
 import { useRouter } from 'next/router';
-import { v5 as uuidv5 } from 'uuid';
-import { SHA256 } from 'crypto-js';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUp() {
     const [error, setError] = useState("");
@@ -165,42 +162,65 @@ export default function SignUp() {
         }
 
         // Prepare the data
-        const FormData = {
-            first_name: firstName,
-            middle_name: middleName || undefined,
-            last_name: lastName,
-            gender: gender,
-            date_of_birth: dateOfBirth,
-            mobile_no: mobileNumber,
-            email: email,
-            occupation: occupation,
-            address1: address1,
-            address2: address2 || undefined,
-            pincode: pinCode,
-            city: useStateAndCity.cityName,
-            state: useStateAndCity.stateName,
-            qualification: qualification,
-            refer_code: useReferCode || undefined,
-        };
+        // const FormData = {
+        //     first_name: firstName,
+        //     middle_name: middleName || undefined,
+        //     last_name: lastName,
+        //     gender: gender,
+        //     date_of_birth: dateOfBirth,
+        //     mobile_no: mobileNumber,
+        //     email: email,
+        //     occupation: occupation,
+        //     address1: address1,
+        //     address2: address2 || undefined,
+        //     pincode: pinCode,
+        //     city: useStateAndCity.cityName,
+        //     state: useStateAndCity.stateName,
+        //     qualification: qualification,
+        //     refer_code: useReferCode || undefined,
+        // };
+
+        const formData = new FormData();
+        formData.append("first_name", firstName);
+        formData.append("middle_name", middleName);
+        formData.append("last_name", lastName);
+        formData.append("gender", gender);
+        formData.append("date_of_birth", dateOfBirth);
+        formData.append("mobile_no", mobileNumber);
+        formData.append("email", email);
+        formData.append("occupation", occupation);
+        formData.append("address1", address1);
+        formData.append("address2", address2);
+        formData.append("pincode", pinCode);
+        formData.append("city", useStateAndCity.cityName);
+        formData.append("state", useStateAndCity.stateName);
+        formData.append("qualification", qualification);
+        formData.append("refer_code", useReferCode);
+        formData.append("deviceToken", "");
+        formData.append("deviceType" , "");
+    
+        setFormState(formData);
 
         try {
             setIsLoading(true);
-            const response = await axios.post(apiConfig.apilaravelUrl + "/member/register", FormData, {
+            const response = await axios.post(apiConfig.apilaravelUrl + "/member/register", formData, {
                 headers: {
                     "Content-Type": "application/json",
                 },
             });
-            toast.success("Mamber Register successfully!");
-            setFormState((prevProducts) =>
-                prevProducts.filter());                 
+
+            toast.success("Mamber Register successfully!",response);
+            // setFormState((prevProducts) =>
+            //     prevProducts.filter());       
+            console.log("response occurred:", response);
+
         } catch (error) {
-            console.error("Error occurred:", error.response ? error.response.data : error.message);
-            toast.error(error.response);
+            console.error("Error occurred:", error);
+            toast.error(error);
         }finally {
             setIsLoading(false); 
           }
     };
-
 
 
     const CheckReferralMember = async (event) => {
@@ -570,7 +590,7 @@ export default function SignUp() {
                                                 <span>
                                                     Already have an account? 
                                                 </span>
-                                                <a href="/login">
+                                                <a href="/leadweb/login">
                                                     Login here!
                                                 </a>
                                             </div>

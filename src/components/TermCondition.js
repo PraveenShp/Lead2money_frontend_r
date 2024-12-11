@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchData } from '@/pages/fetchData';
 import { useLoader } from '@/context/LoaderContext';
 import Footer from "../layouts/Footer";
+import Header from '../layouts/Header';
 
 export default function TermCondition() {
 
@@ -31,6 +32,9 @@ export default function TermCondition() {
 
   return (
     <>
+    
+    <Header/>
+
       <div className="container mt-5 ">
         <div className="d-flex align-items-center justify-content-center mt-5 mb-4 text-primary">
           <h2 className=" mt-5"  data-aos-delay="100">

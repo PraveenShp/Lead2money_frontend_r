@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
 import Footer from '../layouts/Footer'
 import { useLoader } from '../context/LoaderContext';
+import Header from '../layouts/Header';
 
 
 const ProductDetails = () => {
@@ -89,6 +90,7 @@ const ProductDetails = () => {
   
     return (
     <>
+    <Header/>
        
        <section className="agent-section py-5" id="products">
         <div className="container">

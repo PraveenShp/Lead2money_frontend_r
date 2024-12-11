@@ -153,3 +153,115 @@
   margin-bottom: 70px;
 
 }
+
+
+/* ********* Credit Card and prastion loan  */
+
+
+.form-check-input:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.card-lables .form-check-label {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.justify-content-center .form-check {
+  display: flex;
+  align-items: center;
+  border: 1px solid #297289;
+  padding: 5px 15px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.align-items-center .card-2{
+  background-color: #EBF6F9;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+
+.personal-loan-container{
+  margin-top: 30px;
+}
+.personal-loan-cards-man-div{
+  margin-top: 15px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: left;
+  
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+.rating {
+  font-size: 1rem;
+}
+
+
+.lifetime{
+  color: #1E232C;
+}
+.dots{
+  display: flex;
+  gap: 40px;
+  color: #000000;
+  list-style:disc ;
+}
+.text-color{
+  color: #297289;
+}
+
+.text-percentage{
+  color: #9E9E9E;
+  font-size: 14px;
+}
+.card-img-top{
+  max-width: 300px;
+  height: auto;
+}
+
+
+@media (max-width: 576px) {
+  .card-img-top {
+    max-width: 150px;
+    margin: 0 auto;
+  }
+  .dots {
+    gap: 15px; 
+  }
+  .rating {
+    font-size: 0.9rem;
+  }
+}
+.check-box{
+  display: flex ;
+  gap: 10px;
+}
+.select-text{
+  font-size: 25px;
+}
+.loan{
+  color: #030712;
+  font-size: 40px;
+  font-weight: 400;
+}
+.loan-2{
+  color: #030712;
+  font-weight: 700;
+}
+.text-flex{
+  display: flex; 
+  justify-content: space-between;
+}
+
+

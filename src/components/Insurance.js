@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchData, apiConfig } from '@/pages/fetchData';
 import { useLoader } from "@/context/LoaderContext";
 import Footer from '../layouts/Footer';
+import Header from "../layouts/Header";
 
 
 export default function Insurance() {
@@ -59,7 +60,8 @@ export default function Insurance() {
 
   return (
     <>
-
+    
+    <Header/>
     {/* insurance */} 
       <section className="agent-section pad-tb" id="insurance">
       <div className="container">

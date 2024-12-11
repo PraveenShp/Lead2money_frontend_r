@@ -125,9 +125,9 @@ const Header = () => {
                     <span className="clltxt">Happy to Help you</span> +91 9251005445
                   </span>
                 </a> */}
-                <a className="nav-link btn-call hide-mob" href="https://dashboard.lead2money.com/login">
+                <a className="nav-link" href="/leadweb/login">
                   <span>
-                    <button className="btn btn-primary">Login</button>
+                    Login
                   </span>
                 </a>
               </li>

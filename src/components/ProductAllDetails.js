@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { fetchData,apiLiveUrl } from '@/pages/fetchData';
 import { useRouter } from 'next/router';
 import { useLoader } from '../context/LoaderContext';
+import Header from '../layouts/Header';
 
 const ProductAllDetails = () => {
     const [formData, setFormData] = useState({
@@ -129,6 +130,8 @@ const ProductAllDetails = () => {
   
     return (
         <>
+
+        <Header/>
     
         <section className="agent-section pad-tb">
             <div className="border rounded shadow-lg p-3">
