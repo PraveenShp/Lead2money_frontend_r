@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useLoader } from "@/context/LoaderContext";
-import Footer from '../layouts/Footer';
-import Header from "../layouts/Header";
 import { redirect, useParams } from 'next/navigation';
-import { fetchData ,apiConfig} from '@/pages/fetchData';
+import { fetchData ,apiConfig} from '../util/fetchData';
 import { useRouter } from 'next/router';
 import { v5 as uuidv5 } from 'uuid';
 import { SHA256 } from 'crypto-js';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Link from "next/link";
+import MainLayout from "../layouts/MainLayout";
 
 export default function Login() {
     const [error, setError] = useState("");
@@ -31,7 +31,7 @@ export default function Login() {
             ...prevErrors,
             [field]: message,
         }));
-        setError("Please correct the highlighted errors.");
+        setError("Please fills all red line fields.");
     };
 
     
@@ -69,7 +69,7 @@ export default function Login() {
             mobile_no: mobileNumber,
         };
         try {
-            setIsLoading(true);
+            //setIsLoading(true);
             const response = await axios.post(apiConfig.apilaravelUrl + "/login", FormData, {
                 headers: {
                     "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export default function Login() {
         } catch (error) {
             console.error("Error occurred:", error.response ? error.response.data : error.message);
         }finally {
-            setIsLoading(false); 
+            //setIsLoading(false); 
           }
     };
 
@@ -100,30 +100,30 @@ export default function Login() {
 
   return (
     <>
-        <Header/>
+   <MainLayout seo={{ title: 'Login' }}>
 
         <section className="agent-section">
         <div className="blur-bg-blocks">
-          <aside className="blur-bg-set">
+            <aside className="blur-bg-set">
             <div className="blur-bg blur-bg-a"></div>
             <div className="blur-bg blur-bg-b"></div>
             <div className="blur-bg blur-bg-c"></div>
-          </aside>
+            </aside>
         </div>
         <div className="container">
-          <div className="row justify-content-between">
-          <div className="col-lg-6 v-center">
-              <div className="carousel slide" data-ride="carousel" data-interval="3000">
-                  <div className="carousel-inner" style={{ height: "380px", overflow: "hidden" ,borderRadius: "15px"}} >
+            <div className="row justify-content-between">
+            <div className="col-lg-6 v-center">
+                <div className="carousel slide" data-ride="carousel" data-interval="3000">
+                    <div className="carousel-inner" style={{ height: "380px", overflow: "hidden" ,borderRadius: "15px"}} >
                     <div className="carousel-item active" >
                         <img className="d-block w-100" src="/image/hero-img-1.jpg" 
                         alt="Not Available" style={{ objectFit: "cover", height: "100%" }}/>
                     </div>
-                  </div>
-              </div>
+                    </div>
+                </div>
             </div>
             <div className="col-lg-6 v-center">
-              <div className="header-heading-1">
+                <div className="header-heading-1">
                 <form onSubmit={Login}>
                     <h1 className="">
                     <span className="fw3">
@@ -154,16 +154,17 @@ export default function Login() {
                         data-aos-delay="600"> Login </button>
                 </form>
 
-              </div>
-              <div className="mt30">
-                Don't have an account? <a href="/leadweb/signup">Sing Up </a>
-                By clicking continue, you agree to our<br/> <a href="/leadweb/term-condition">Terms & Conditions</a> 
-                and that you have read our <a href="/leadweb/privacy-policy">Privacy Policy</a>. </div>
+                </div>
+                <div className="mt30">
+                Don't have an account? <Link href="/leadweb/signup">Sing Up </Link>
+                By clicking continue, you agree to our<br/> <Link href="/leadweb/term-condition">Terms & Conditions</Link> 
+                and that you have read our <Link href="/leadweb/privacy-policy">Privacy Policy</Link>. </div>
             </div>
-          </div>
+            </div>
         </div>
-      </section>
-        <Footer/>
+        </section>
+        
+    </MainLayout>
     </>
   )
 }

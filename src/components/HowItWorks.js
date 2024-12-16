@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { fetchData ,apiConfig} from '@/pages/fetchData';
+import { fetchData ,apiConfig} from '../util/fetchData';
 import { useLoader } from "@/context/LoaderContext";
-import Footer from '../layouts/Footer';
+import MainLayout from "../layouts/MainLayout";
 
 
 export default function HowItWorks() {
@@ -15,7 +15,7 @@ export default function HowItWorks() {
     const fetcHoweWorks = async () => { 
         const slug = 'how-it-works';
         try {
-          setIsLoading(true);
+          //setIsLoading(true);
           const response = await fetchData(`page-details?slug=${encodeURIComponent(slug)}`);
           setHowItWork(response.data.data);
           setHowItWorkAll(response.data.alldata);
@@ -23,7 +23,7 @@ export default function HowItWorks() {
           console.error("Error occurred:", error.response ? error.response.data : error.message);
           toast.error("An error occurred while processing the payment.");
         }finally{
-          setIsLoading(false);
+          //setIsLoading(false);
         }
       }; // ***
   
@@ -31,18 +31,19 @@ export default function HowItWorks() {
     fetcHoweWorks();
   },[]);
 
-
+  
   return (
     <>
+    <MainLayout seo={{ title: 'How It Work' }}>
        <section section className="agent-section pad-tb" id="how-it-works">
           <div className="container">
             <div className="row justify-content-center text-center">
               <div className="col-lg-11 ">
                 <div className="common-heading">
-                  <h2 className="mb20" data-aos="fade-up" data-aos-delay="100">
+                  <h2 className="mb20" data-aos-delay="100">
                     <em>{useHowItWork ? useHowItWork.page_name : ''}</em>
                   </h2>
-                  <p data-aos="fade-up" data-aos-delay="300" className=" text-center" >
+                  <p data-aos-delay="300" className=" text-center" >
                      {useHowItWork ? useHowItWork.page_name_title : ''}
                   </p>
                   {/* Step 1 */}
@@ -82,7 +83,7 @@ export default function HowItWorks() {
             </div>
           </div>
       </section>  
-      <Footer/>
+    </MainLayout>
     </>
   )
 }

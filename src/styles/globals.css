@@ -264,4 +264,29 @@
   justify-content: space-between;
 }
 
+/*--------------------Personal Loan CSS ------------------------*/
+.feature-container{
+  border: 1px solid #dee9ff;
+  border-radius: 6px;
+  margin-bottom: 16px;
 
+}
+.ftr-header{
+  border-bottom: 1px solid #dee9ff;
+  border-radius: 6px 6px 0px 0px;
+  background-color: #EBF6F9;
+  padding: 6px 16px;
+  
+}
+.ftr-header em{
+  font-size: 18px;
+  
+}
+.ftr-footer{
+  padding: 16px;
+  
+}
+.ftr-footer li{
+  list-style: number;
+  margin-left: 16px;
+}

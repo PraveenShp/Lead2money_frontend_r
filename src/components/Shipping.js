@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { fetchData } from '@/pages/fetchData';
+import { fetchData } from '../util/fetchData';
 import { useLoader } from "@/context/LoaderContext";
-import Footer from '../layouts/Footer';
-import Header from "../layouts/Header";
+import MainLayout from "../layouts/MainLayout";
+
 
 
 export default function Shipping() {
@@ -16,14 +16,14 @@ export default function Shipping() {
   const fetchShipping = async () => { 
     const slug = 'shipping-policy';
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       const response = await fetchData(`page-details?slug=${encodeURIComponent(slug)}`);
       setShipping(response.data.data);
       setAllShipping(response.data.alldata);
     } catch (error) {
       console.error("Error occurred:", error.response ? error.response.data : error.message);
     }finally{
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   }; 
   
@@ -35,10 +35,10 @@ export default function Shipping() {
   return (
     <>
 
-    <Header/>
+    <MainLayout seo={{ title: 'Delivery Return' }}>
       <div className="container mt-5 ">
         <div className="d-flex align-items-center justify-content-center mt-5 mb-4 text-primary">
-          <h2 className=" mt-5" data-aos="fade-up" data-aos-delay="100">
+          <h2 className=" mt-5" data-aos-delay="100">
             <em> {useShipping ? useShipping.page_name : ''}</em>
           </h2>
         </div>
@@ -68,7 +68,7 @@ export default function Shipping() {
           </p>
         </ul>
       </div>
-      <Footer/>
+    </MainLayout>
     </>
   )
 }

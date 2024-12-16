@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { fetchData ,apiConfig} from '@/pages/fetchData';
+import { fetchData ,apiConfig} from '../util/fetchData';
 import { useLoader } from "@/context/LoaderContext";
-import Footer from '../layouts/Footer';
-import Header from "../layouts/Header";
+import MainLayout from "../layouts/MainLayout";
 
 
 export default function MutualFund() {
@@ -23,7 +22,7 @@ export default function MutualFund() {
   const fetchMutualFund = async () => { 
     const slug = 'mutual-fund';
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       //  const response = await fetchData(`page-details?slug=${slug}`);
       const response = await fetchData(`page-details?slug=${encodeURIComponent(slug)}`);
       setMutualFund(response.data.data);
@@ -34,7 +33,7 @@ export default function MutualFund() {
       toast.error("An error occurred while processing the payment.");
     }finally{
 
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   }; // ***
 
@@ -43,7 +42,7 @@ export default function MutualFund() {
   const fetchOurMutualFund = async () => {
     const slug = 'our-mutual-fund';
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       //  const response = await fetchData(`page-details?slug=${slug}`);
       const response = await fetchData(`page-details?slug=${encodeURIComponent(slug)}`);
       setOurMutualFund(response.data.data);
@@ -53,7 +52,7 @@ export default function MutualFund() {
       console.error("Error occurred:", error.response ? error.response.data : error.message);
       toast.error("An error occurred while processing the payment.");
     }finally{
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   }; // ***
 
@@ -62,7 +61,7 @@ export default function MutualFund() {
   const fetchLeadGenerationServices = async () => { 
     const slug = 'lead-generation-services';
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       //  const response = await fetchData(`page-details?slug=${slug}`);
       const response = await fetchData(`page-details?slug=${encodeURIComponent(slug)}`);
       setOurLeadGeneration(response.data.data);
@@ -72,7 +71,7 @@ export default function MutualFund() {
       console.error("Error occurred:", error.response ? error.response.data : error.message);
       toast.error("An error occurred while processing the payment.");
     }finally{
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   }; // ***
 
@@ -81,7 +80,7 @@ export default function MutualFund() {
   const fetchQuestions = async () => { 
     const slug = 'frequently-asked-questions';
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       const response = await fetchData(`page-details?slug=${encodeURIComponent(slug)}`);
       setQuestions(response.data.data);
       setAllQuestions(response.data.alldata);
@@ -89,7 +88,7 @@ export default function MutualFund() {
       console.error("Error occurred:", error.response ? error.response.data : error.message);
       toast.error("An error occurred while processing the payment.");
     }finally{
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   }; 
 
@@ -107,7 +106,8 @@ export default function MutualFund() {
 
   return (
     <>
-    <Header/>
+
+    <MainLayout seo={{ title: 'Mutual Fund' }}>
     {/* mutual fund */}
     <section className="agent-section pad-tb" id="mutual-fund">
         <div className="container">
@@ -164,7 +164,7 @@ export default function MutualFund() {
 
             <div className="row divrightbdr"> 
                 { useAllOurLeadGeneration.map((row, index) => (
-                <div className="col-lg-6">
+                <div className="col-lg-6" key={index}>
                     <div className="steps-div  mt30" data-aos-delay="100" >
                         <div className="steps-icons-1">
                         <img src="/images/icons/choice.png" alt="steps" />
@@ -282,7 +282,7 @@ export default function MutualFund() {
         </div>
     </section>
 
-      <Footer/>
+    </MainLayout>
     </>
   )
 }

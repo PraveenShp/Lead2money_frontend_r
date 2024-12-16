@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchData } from '@/pages/fetchData';
+import { fetchData } from '../util/fetchData';
 import { useLoader } from '@/context/LoaderContext';
-import Footer from "../layouts/Footer";
-import Header from '../layouts/Header';
+import MainLayout from '../layouts/MainLayout';
 
 export default function TermCondition() {
 
@@ -15,14 +14,14 @@ export default function TermCondition() {
   const fetchTermCondtion = async () => { 
     const slug = 'terms-conditions';
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       const response = await fetchData(`page-details?slug=${encodeURIComponent(slug)}`);
       setTermCondition(response.data.data);
       setAllTermCondition(response.data.alldata);
     } catch (error) {
       console.error("Error occurred:", error.response ? error.response.data : error.message);
     }finally{
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   }; 
   
@@ -33,7 +32,7 @@ export default function TermCondition() {
   return (
     <>
     
-    <Header/>
+    <MainLayout seo={{ title: 'Term Condition' }}>
 
       <div className="container mt-5 ">
         <div className="d-flex align-items-center justify-content-center mt-5 mb-4 text-primary">
@@ -64,7 +63,8 @@ export default function TermCondition() {
             )}
         </ul>
       </div>
-      <Footer/>
+
+    </MainLayout>
     </>
   );
 }

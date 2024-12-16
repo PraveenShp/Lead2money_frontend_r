@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { redirect, useParams } from 'next/navigation';
-import { fetchData ,apiConfig} from '@/pages/fetchData';
+import { fetchData ,apiConfig} from '../util/fetchData';
 import { useRouter } from 'next/router';
 import { v5 as uuidv5 } from 'uuid';
 import { SHA256 } from 'crypto-js';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Footer from '../layouts/Footer';
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import MainLayout from '../layouts/MainLayout';
 
 export default function Checkout() {
     const [error, setError] = useState("");
@@ -19,7 +20,7 @@ export default function Checkout() {
         middleName: '',
         lastName: '',
         gender: '',
-        dateOfBirth: '',
+        dateOfBirth: null,
         mobileNumber: '',
         email: '',
         occupation: '',
@@ -83,7 +84,7 @@ export default function Checkout() {
             ...prevErrors,
             [field]: message,
         }));
-        setError("Please correct the highlighted errors.");
+        setError("Please fills all red line fields.");
     };
 
 
@@ -93,6 +94,10 @@ export default function Checkout() {
         } else {
             setIsVisible(false);
         }
+    };
+
+    const handleDateChange = (date) => {
+        setFormState({ ...formState, dateOfBirth: date });
     };
 
     const handleChange = (e) => {
@@ -116,7 +121,7 @@ export default function Checkout() {
             merchantId: apiConfig.merchantId,
             merchantTransactionId: transitionId,
             merchantUserId: `MUID${numericUuid.slice(-12)}`,
-            amount: 10,
+            amount: 1,
             redirectUrl: apiConfig.liveUrl2,
             redirectMode: "POST",
             callbackUrl: apiConfig.liveUrl2,
@@ -137,9 +142,10 @@ export default function Checkout() {
         //------UTL PHONE PAY URL ----- https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay 
         // ----   Production URL =======  https://api.phonepe.com/apis/hermes/pg/v1/pay
         const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-        const Url = 'https://api.phonepe.com/apis/hermes/pg/v1/pay';
+        // const Url = 'https://api.phonepe.com/apis/hermes/pg/v1/pay';
+        const Url = 'https://api-preprod.phonepe.com/apis/hermes';
         try {
-            console.log('true');;
+            console.log('true');
             const response = await axios.post( Url, {
                     request: dataBase64, },
                 { headers: {
@@ -175,8 +181,8 @@ export default function Checkout() {
         e.preventDefault();
         setError("");
         setFieldErrors({});  
-        // SuccessFullPayNow();
-        // return;
+        SuccessFullPayNow();
+        return;
        
         const {
             firstName, middleName, lastName, gender, dateOfBirth,
@@ -447,6 +453,8 @@ export default function Checkout() {
 
     return (
         <>
+        <MainLayout seo={{ title: 'Check Out' }}>
+        
         <section class="agent-section">
             <div className="container">
                 <div className="d-flex align-items-center justify-content-center mt-4 mb-4 ">
@@ -511,13 +519,20 @@ export default function Checkout() {
                                     </div>
                                     <div className="col-md-4">
                                         <div className="form-floating">
-                                            <input
+                                            {/* <input
                                                 name="dateOfBirth"
                                                 type='date'
                                                 placeholder="Date of Birth"
                                                 value={formState.dateOfBirth}
                                                 onChange={(e) => setFormState({ ...formState, dateOfBirth: e.target.value })}
                                                 className={`form-control ${fieldErrors.dateOfBirth ? "is-invalid" : ""}`}
+                                            /> */}
+                                            <DatePicker
+                                                selected={formState.dateOfBirth}
+                                                onChange={handleDateChange}
+                                                className="form-control"
+                                                dateFormat="dd/MM/yyyy" // Custom date format
+                                                placeholderText="DD/MM/YYYY"
                                             />
                                         </div>
                                     </div>
@@ -704,8 +719,8 @@ export default function Checkout() {
                 </form>
             </div>
         </section>
-            <br/>
-          <Footer/>                          
+            
+        </MainLayout>                         
       </>
       
     );

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLoader } from "@/context/LoaderContext";
-import Footer from '../layouts/Footer';
-import Header from "../layouts/Header";
 import { redirect, useParams } from 'next/navigation';
-import { fetchData ,apiConfig} from '@/pages/fetchData';
+import { fetchData ,apiConfig} from '../util/fetchData';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Link from "next/link";
+import MainLayout from "../layouts/MainLayout";
 
 export default function SignUp() {
     const [error, setError] = useState("");
@@ -73,7 +73,7 @@ export default function SignUp() {
             ...prevErrors,
             [field]: message,
         }));
-        setError("Please correct the highlighted errors.");
+        setError("Please fills all red line fields.");
     };
 
     
@@ -202,7 +202,7 @@ export default function SignUp() {
         setFormState(formData);
 
         try {
-            setIsLoading(true);
+            //setIsLoading(true);
             const response = await axios.post(apiConfig.apilaravelUrl + "/member/register", formData, {
                 headers: {
                     "Content-Type": "application/json",
@@ -211,14 +211,15 @@ export default function SignUp() {
 
             toast.success("Mamber Register successfully!",response);
             // setFormState((prevProducts) =>
-            //     prevProducts.filter());       
+            //     prevProducts.filter());
+            router.push('/leadweb/login');       
             console.log("response occurred:", response);
 
         } catch (error) {
             console.error("Error occurred:", error);
             toast.error(error);
         }finally {
-            setIsLoading(false); 
+            //setIsLoading(false); 
           }
     };
 
@@ -353,26 +354,32 @@ export default function SignUp() {
 
   return (
     <>
-        <Header/>
+    <MainLayout seo={{ title: 'Sign Up' }}>
 
         <section class="agent-section">
             <div className="container">
-                <div className="d-flex align-items-center justify-content-center mt-4 mb-4 ">
+                {/* <div className="d-flex align-items-center justify-content-center mt-4 mb-4 ">
                     <h2 className="d-flex align-items-center justify-content-center">
                         <em> Sign Up</em>
                     </h2>
-                </div>
+                </div> */}
 
-                <form onSubmit={SignUp}>
-                <div class="row">
-                    {/* <!-- Form Section --> */}
-                    <div class="col-lg-12">
-                        <div className="card shadow p-4">
-                                <h3 className="mb-4">Create an Account!</h3>
-                                {error && <div id="error" className="text-danger mb-3">{error}</div>}
-                                <div className="row mb-3">
+                <div class="row justify-content-between">
+                    <div class="col-lg-5 v-center">
+                        <div className="header-heading-1">
+                            <img className="d-block w-100" src="/image/hero-img-1.jpg" 
+                            alt="Not Available" style={{ objectFit: "cover", height: "100%" }}/>
+                        </div>
+                    </div>
+                    <div className="col-lg-7 v-center">
+                        <div className="header-heading-1">
+                            <form onSubmit={SignUp}>
+                                <h3 className="mb-12"><em> Sign Up </em></h3>   
+                                <p className="col-12 mt-2"> Create an Account! {error && <div id="error" className="text-danger mb-1  float-right">{error}</div>}  </p> 
+                                <hr/>
+                                <div className="row mb-2">
                                     {/* First Name Field */}
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                         <input className={`form-control ${fieldErrors.firstName ? "is-invalid" : ""}`}
                                             name="firstName"
@@ -382,7 +389,7 @@ export default function SignUp() {
                                         />
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="middleName"
@@ -393,7 +400,7 @@ export default function SignUp() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="lastName"
@@ -405,9 +412,9 @@ export default function SignUp() {
                                         </div> 
                                     </div>
                                 </div>
-
-                                <div className="row mb-3">
-                                    <div className="col-md-4">
+                                
+                                <div className="row mb-2">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <select name="gender" id="" className={`form-control ${fieldErrors.gender ? "is-invalid" : ""}`} placeholder="Gender"
                                                 onChange={(e) => setFormState({ ...formState, gender: e.target.value })} >
@@ -418,7 +425,7 @@ export default function SignUp() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="dateOfBirth"
@@ -430,7 +437,7 @@ export default function SignUp() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="mobileNumber"
@@ -444,8 +451,8 @@ export default function SignUp() {
                                     </div>
                                 </div>
                                 
-                                <div className='row mb-3'>
-                                    <div className="col-md-4">
+                                <div className='row mb-2'>
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="email"
@@ -456,7 +463,7 @@ export default function SignUp() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <select
                                                 className={`form-control ${fieldErrors.occupation ? "is-invalid" : ""}`}
@@ -471,7 +478,7 @@ export default function SignUp() {
                                             </select>
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="address1"
@@ -484,8 +491,8 @@ export default function SignUp() {
                                     </div>
                                 </div>
 
-                                <div className='row mb-3'>
-                                    <div className="col-md-4">
+                                <div className='row mb-2'>
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="address2"
@@ -496,7 +503,7 @@ export default function SignUp() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="pinCode"
@@ -508,7 +515,7 @@ export default function SignUp() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="city"
@@ -521,8 +528,8 @@ export default function SignUp() {
                                     </div>
                                 </div>
 
-                                <div className='row mb-3'>
-                                    <div className="col-md-4">
+                                <div className='row mb-2'>
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="state"
@@ -533,7 +540,7 @@ export default function SignUp() {
                                             />
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <select
                                                 className={`form-control ${fieldErrors.qualification ? "is-invalid" : ""}`}
@@ -550,7 +557,7 @@ export default function SignUp() {
                                             
                                         </div>
                                     </div>
-                                    <div className="col-md-4">
+                                    <div className="col-md-4 mt-2">
                                         <div className="form-floating">
                                             <input
                                                 name="referenceCode"
@@ -573,7 +580,7 @@ export default function SignUp() {
                                     </div>
                                 </div>
 
-                                <div className='row'>
+                                <div className='row md-12'>
                                     <div className="col-sm-12">
                                         <div className="d-flex align-items-center justify-content-center mt-4 mb-4 ">
                                             <div className="d-flex align-items-center justify-content-center">
@@ -587,25 +594,25 @@ export default function SignUp() {
                                     <div className="col-sm-12">
                                         <div className="d-flex align-items-center justify-content-center mt-4 mb-4 ">
                                             <div className="d-flex align-items-center justify-content-center">
-                                                <span>
+                                                <p>
                                                     Already have an account? 
-                                                </span>
-                                                <a href="/leadweb/login">
+                                                </p>
+                                                <Link href="/leadweb/login">
                                                     Login here!
-                                                </a>
+                                                </Link>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
-                </form>
             </div>
         </section>
-
         
-        <Footer/>
+        </MainLayout>
     </>
   )
 }

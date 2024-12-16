@@ -1,9 +1,8 @@
 import React, { useState ,useEffect} from 'react'
-import { fetchData,apiConfig} from '@/pages/fetchData';
+import { fetchData,apiConfig} from '../util/fetchData';
 import { useRouter } from 'next/router';
-import Footer from '../layouts/Footer'
 import { useLoader } from '../context/LoaderContext';
-import Header from '../layouts/Header';
+import MainLayout from '../layouts/MainLayout';
 
 const ProductDetails = () => {
   const [products, setProducts] = useState([]);
@@ -16,7 +15,7 @@ const ProductDetails = () => {
   //***** Product Fatch Data Api */
   const fetchProducts = async() => {
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
      console.log('successfull');
       const data = await fetchData("products");
       setProducts(data.data || []);
@@ -24,7 +23,7 @@ const ProductDetails = () => {
     } catch (error) {
       console.error('Error fetching products:', error);
     }finally {
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   };
 
@@ -62,9 +61,9 @@ const ProductDetails = () => {
     return (
     <>
 
-      <Header/>
+      <MainLayout seo={{ title: 'Products' }}>
 
-    {/* Products */}
+      {/* Products */}
         <section className="agent-section pad-tb" id="products">
         <div className="container">
             <div className="row justify-content-center text-center">
@@ -100,7 +99,7 @@ const ProductDetails = () => {
                   <div key={index} className="col-lg-3 col-6 mt-3" data-aos="fade-In" data-aos-delay="100">
                       <div className="full-image-card hover-scale">
                         <div className="image-div">
-                              <a href="#"><img src={`${apiConfig.apiLiveUrl}/${row.product_image}`} 
+                              <a href="#"><img src={`${row.product_image}`} 
                                 alt={row.name} className="img-fluid" /></a>
                         </div>
                         <div className="info-text-block ">
@@ -141,7 +140,7 @@ const ProductDetails = () => {
                   <div key={index} className="col-lg-3 col-6 mt-3" data-aos="fade-In" data-aos-delay="100">
                       <div className="full-image-card hover-scale">
                         <div className="image-div">
-                              <a href="#"><img src={`${apiConfig.apiLiveUrl}/${row.product_image}`} 
+                              <a href="#"><img src={`${row.product_image}`} 
                                 alt={row.name} className="img-fluid" /></a>
                         </div>
                         <div className="info-text-block ">
@@ -174,7 +173,7 @@ const ProductDetails = () => {
         </div>
       </section>
 
-      <Footer/>
+      </MainLayout>
     </>
 
     

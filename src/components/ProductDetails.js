@@ -1,10 +1,9 @@
 import React, { useState ,useEffect} from 'react'
-import { fetchData,} from '@/pages/fetchData';
+import { fetchData,} from '../util/fetchData';
 import { useParams } from 'next/navigation';
 import { useRouter } from 'next/router';
-import Footer from '../layouts/Footer'
 import { useLoader } from '../context/LoaderContext';
-import Header from '../layouts/Header';
+import MainLayout from '../layouts/MainLayout';
 
 
 const ProductDetails = () => {
@@ -22,19 +21,18 @@ const ProductDetails = () => {
 
   const fetchProductsDetails = async (id) => {
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       const data = await fetchData(`products/${id}`);
-      if (data.status == true) {
         setProducts(data.data || []);
         console.log(data,"Data  Found .!");
-
+        if (data.status == true) {
       } else {
         console.error("Data Not Found .!");
       }
     } catch (error) {
       console.error('Error fetching products:', error);
     }finally{
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   };
 
@@ -68,7 +66,7 @@ const ProductDetails = () => {
     setFormData(formData);
 
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       const data = await fetchData(`cart/store`, { method: 'POST', body: formData, });
       if (data) {
         console.log("Product added to cart successfully");
@@ -79,7 +77,7 @@ const ProductDetails = () => {
     } catch (error) {
       console.error("Error adding product to cart:", error);
     }finally{
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   };
 
@@ -90,8 +88,8 @@ const ProductDetails = () => {
   
     return (
     <>
-    <Header/>
-       
+    <MainLayout seo={{ title: 'Products' }}>
+      
        <section className="agent-section py-5" id="products">
         <div className="container">
           <div className="row justify-content-center text-center">
@@ -110,7 +108,7 @@ const ProductDetails = () => {
           <div className="row">
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card h-100">
-                <img src={`https://api.lead2money.com/${products.product_image}`}
+                <img src={products.product_image}
                   alt={products.title || 'Not Available'}  className="card-img-top img-fluid" />
               </div>
             </div>
@@ -148,7 +146,8 @@ const ProductDetails = () => {
           </div>
         </div>
       </section>
-      <Footer/>
+
+    </MainLayout>
     </>
 
     

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useLoader } from "@/context/LoaderContext";
-import Footer from '../layouts/Footer';
-import Header from "../layouts/Header";
 import { redirect, useParams } from 'next/navigation';
-import { fetchData ,apiConfig} from '@/pages/fetchData';
+import { fetchData ,apiConfig} from '../util/fetchData';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-
+import Link from "next/link";
+import MainLayout from "../layouts/MainLayout";
 
 export default function CreditCard() {
 
@@ -19,7 +18,7 @@ export default function CreditCard() {
   return (
     <>
     
-    <Header/>
+    <MainLayout seo={{ title: 'Credit Card' }}>
       {/* top section */}
       <section className="hero-section-1  agency-bg " id="home">
         <div className="blur-bg-blocks">
@@ -33,8 +32,7 @@ export default function CreditCard() {
           <div className="row justify-content-between">
             <div className="col-lg-4 v-center">
               <div
-                className="img-box1 m-mt60"
-                data-aos="fade-up"
+                className="img-box1 m-mt60" 
                 data-aos-delay="500"
               >
                 <img
@@ -46,10 +44,10 @@ export default function CreditCard() {
             </div>
             <div className="col-lg-8 v-center">
               <div className="header-heading-1">
-                <h1 className="" data-aos="zoom-out-up">
+                <h1 className="">
                   <span className="fw3"> IDFC First Bank Credit Card</span>
                 </h1>
-                <p data-aos="zoom-out-up" data-aos-delay="400">
+                <p data-aos-delay="400">
                   IDFC FIRST Bank offers a range of credit cards for different
                   categories, including lifestyle and rewards. These IDFC Bank
                   credit cards are tailored to cater to the specific needs and
@@ -58,17 +56,16 @@ export default function CreditCard() {
                   all online and offline purchases, zero joining and annual
                   fees, low-interest rates, and so on.
                 </p>
-                <a
+                <Link
                   href="#modal"
                   data-toggle="modal"
                   data-target="#modal_aside_right"
-                  className="btnpora btn-rd2 mt30"
-                  data-aos="zoom-out-up"
+                  className="btnpora btn-rd2 mt30" 
                   data-aos-delay="600"
                 >
                   Apply Now
-                </a>
-                <p data-aos="zoom-out-up" data-aos-delay="400" className="mt-3">
+                </Link>
+                <p data-aos-delay="400" className="mt-3">
                   On IDFC First Bank website
                 </p>
               </div>
@@ -83,7 +80,7 @@ export default function CreditCard() {
           <div className="row">
             <div className="col-12">
               <div className="text-center">
-                <h3 data-aos="fade-up" data-aos-delay="300" className="d-block">
+                <h3  data-aos-delay="300" className="d-block">
                   Best IDFC Bank Credit Cards in July 2024
                 </h3>
               </div>
@@ -127,7 +124,6 @@ export default function CreditCard() {
                 </div>
               </div>
 
-
               <div className=" shadow-lg mt-4 mb-5 rounded">
                 <div className="">
                   <div className="row align-items-center card-2">
@@ -135,7 +131,7 @@ export default function CreditCard() {
                       <div className=" row d-flex justify-content-between">
                         <div className="col-sm-12 col-5 ">
                           <img
-                            src="/image/idfc.jpg"
+                            src="/images/credit-cards/au-credit.png"
                             className="card-img-top img-fluid mt-3 p-3 "
                             alt="Card Image"
                           />
@@ -240,7 +236,7 @@ export default function CreditCard() {
                           </span>
                         </div>
                       </div>
-                      <a
+                      <Link
                         href="#"
                         data-toggle="modal"
                         data-target="#modal_aside_right"
@@ -248,12 +244,11 @@ export default function CreditCard() {
                         data-aos-delay="600"
                       >
                         Apply
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
-
 
               <div className=" shadow-lg mt-4 mb-5 rounded">
                 <div className="">
@@ -262,7 +257,7 @@ export default function CreditCard() {
                       <div className=" row d-flex justify-content-between">
                         <div className="col-sm-12 col-5 ">
                           <img
-                            src="/image/idfc.jpg"
+                            src="/images/credit-cards/axis-bank-credit.png"
                             className="card-img-top img-fluid mt-3 p-3 "
                             alt="Card Image"
                           />
@@ -367,7 +362,7 @@ export default function CreditCard() {
                           </span>
                         </div>
                       </div>
-                      <a
+                      <Link
                         href="#"
                         data-toggle="modal"
                         data-target="#modal_aside_right"
@@ -375,17 +370,17 @@ export default function CreditCard() {
                         data-aos-delay="600"
                       >
                         Apply
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
-
 
             </div>
           </div>
         </div>
       </section>
+      </MainLayout>
 
     </>
   );

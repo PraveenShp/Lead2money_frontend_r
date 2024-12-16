@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Footer from '../layouts/Footer';
-import Header from "../layouts/Header";
+import Link from "next/link";
+import MainLayout from "../layouts/MainLayout";
 
 
 export default function PersonalLoan() {
@@ -13,7 +13,7 @@ export default function PersonalLoan() {
   return (
     <>
 
-    <Header/>
+    <MainLayout seo={{ title: 'Personal Loan' }}>
       {/* top section */}
       <section className="hero-section-1  agency-bg " id="home">
         <div className="blur-bg-blocks">
@@ -42,7 +42,7 @@ export default function PersonalLoan() {
                 <p data-aos="zoom-out-up" data-aos-delay="400">
                 Get a personal loan of up to Rs 40 lakh with interest rates starting at 10.5% p.a. Explore pre-approved offers from our partner lenders, featuring end-to-end digital processing and instant disbursals.
                 </p>
-                <a
+                <Link
                   href="#modal"
                   data-toggle="modal"
                   data-target="#modal_aside_right"
@@ -51,7 +51,7 @@ export default function PersonalLoan() {
                   data-aos-delay="600"
                 >
                   Apply Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function PersonalLoan() {
     
       <section className="container mb-5 personal-loan-container">
         <div className="row">
-          <div className="col-8">
+          <div className="col-12">
             <div className="d-flex flex-column flex-md-row align-items-center">
               <h2 className="mb-3 d-flex flex-column flex-md-row align-items-center">
                 <span className="loan-2 text-center text-md-start">
@@ -71,7 +71,7 @@ export default function PersonalLoan() {
                 </p>
               </h2>
             </div>
-
+          
             {/* personal Loan Cards */}
             <div className="row border rounded personal-loan-cards-man-div">
               <div className="col-12 d-flex flex-column flex-md-row justify-content-between align-items-center p-3">
@@ -82,50 +82,8 @@ export default function PersonalLoan() {
                   <p className="px-3 mb-0">HDFC Bank</p>
                 </div>
                 <div className="d-flex ms-auto gap-3 flex-wrap  flex-md-row card-lables">
-                  <p className="form-check-label form-check py-1 mb-0 mt-2">
-                    10 Second Disbursal*
-                  </p>
-                  <p className="form-check-label form-check py-1 mb-0 mt-2">
-                    100% Digital Process*
-                  </p>
-                  <p className="form-check-label form-check py-1 mb-0 mt-2">
-                    Quick Disbursal
-                  </p>
-                </div>
-              </div>
-
-              <div class="container ">
-                <div class="row  mt-3">
-                  <div class="col-6 col-md-2 mb-3">
-                    <div>
-                      <div class="d-block">Max. Loan Amt.</div>
-                      <span class="mt-1 loan-2">Up to ₹40L</span>
-                    </div>
-                  </div>
-
-                  <div class="col-6 col-md-2 mb-3">
-                    <div>
-                      <div class="d-block">Rate of Interest</div>
-                      <span class="mt-1 loan-2">10.85% - 24%</span>
-                    </div>
-                  </div>
-
-                  <div class="col-6 col-md-2 mb-3">
-                    <div>
-                      <div class="d-block">Tenure upto</div>
-                      <span class="mt-1 loan-2">Upto 6 Years</span>
-                    </div>
-                  </div>
-
-                  <div class="col-6 col-md-3 mb-3">
-                    <div>
-                      <div class="d-block">Processing Fee</div>
-                      <span class="mt-1 loan-2">Up to ₹40L</span>
-                    </div>
-                  </div>
-                  <div class="col-6 col-md-3 mb-3">
-                        <div class=" d-flex justify-content-center">
-                            <a
+                <div className=" d-flex justify-content-center">
+                            <Link
                             href="#modal"
                             data-toggle="modal"
                             data-target="#modal_aside_right"
@@ -134,12 +92,47 @@ export default function PersonalLoan() {
                             data-aos-delay="600"
                             >
                             Apply Now
-                            </a>
+                            </Link>
                         </div>
-                    </div>
-                  
+                  <div className="pt-3 pl-2">
+                    <a href="#">View Detail</a>
+                  </div>
                 </div>
               </div>
+              <div className="col-12">
+                <div className="feature-container">
+                  <div className="ftr-header">
+                    <em>Benefits</em>
+                  </div>
+                  <div className="ftr-footer">
+                    <ul>
+                      <li>List 1 </li>
+                      <li>List 2 </li>
+                      <li>List 3 </li>
+                      <li>List 4</li>
+                      <li>List 5</li>
+
+                    </ul>
+                  </div>
+                </div>
+                <div className="feature-container">
+                  <div className="ftr-header">
+                    <em>Benefits</em>
+                  </div>
+                  <div className="ftr-footer">
+                    <ul>
+                      <li>List 1 </li>
+                      <li>List 2 </li>
+                      <li>List 3 </li>
+                      <li>List 4</li>
+                      <li>List 5</li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              
             </div>
            
               {/* personal Loan Cards */}
@@ -195,7 +188,7 @@ export default function PersonalLoan() {
                 </div>
                 <div class="col-6 col-md-3 mb-3">
                     <div class=" d-flex justify-content-center">
-                        <a
+                        <Link
                         href="#modal"
                         data-toggle="modal"
                         data-target="#modal_aside_right"
@@ -204,7 +197,7 @@ export default function PersonalLoan() {
                         data-aos-delay="600"
                         >
                         Apply Now
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 
@@ -265,7 +258,7 @@ export default function PersonalLoan() {
                   </div>
                   <div class="col-6 col-md-3 mb-3">
                         <div class=" d-flex justify-content-center">
-                            <a
+                            <Link
                             href="#modal"
                             data-toggle="modal"
                             data-target="#modal_aside_right"
@@ -274,7 +267,7 @@ export default function PersonalLoan() {
                             data-aos-delay="600"
                             >
                             Apply Now
-                            </a>
+                            </Link>
                         </div>
                     </div>
                   
@@ -335,7 +328,7 @@ export default function PersonalLoan() {
                   </div>
                   <div class="col-6 col-md-3 mb-3">
                         <div class=" d-flex justify-content-center">
-                            <a
+                            <Link
                             href="#modal"
                             data-toggle="modal"
                             data-target="#modal_aside_right"
@@ -344,7 +337,7 @@ export default function PersonalLoan() {
                             data-aos-delay="600"
                             >
                             Apply Now
-                            </a>
+                            </Link>
                         </div>
                     </div>
                   
@@ -405,7 +398,7 @@ export default function PersonalLoan() {
                   </div>
                   <div class="col-6 col-md-3 mb-3">
                         <div class=" d-flex justify-content-center">
-                            <a
+                            <Link
                             href="#modal"
                             data-toggle="modal"
                             data-target="#modal_aside_right"
@@ -414,7 +407,7 @@ export default function PersonalLoan() {
                             data-aos-delay="600"
                             >
                             Apply Now
-                            </a>
+                            </Link>
                         </div>
                     </div>
                   
@@ -431,7 +424,7 @@ export default function PersonalLoan() {
         </div>
       </section>
 
-      <Footer/>
+      </MainLayout>
     </>
   );
 }

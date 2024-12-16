@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchData } from '@/pages/fetchData';
+import { fetchData } from '../../util/fetchData';
 import { useLoader } from '@/context/LoaderContext';
-import Footer from "../../layouts/Footer";
+import MainLayout from '../../layouts/MainLayout';
 
 
 export default function TermCondition() {
@@ -13,14 +13,14 @@ export default function TermCondition() {
   const fetchPrivacyPolicy = async () => { 
     const slug = 'privacy-policy';
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
       const response = await fetchData(`page-details?slug=${encodeURIComponent(slug)}`);
       setPrivecyPolicy(response.data.data);
       setAllPrivecyPolicy(response.data.alldata);
     } catch (error) {
       console.error("Error occurred:", error.response ? error.response.data : error.message);
     }finally{
-      setIsLoading(false);
+      //setIsLoading(false);
     }
   }; 
   
@@ -30,15 +30,16 @@ export default function TermCondition() {
 
   return (
     <>
+    <MainLayout seo={{ title: 'Privacy Policy' }}>
       <div className="container mt-5 ">
         <div className="d-flex align-items-center justify-content-center mt-5 mb-4 text-primary">
-          <h2 className=" mt-5" data-aos="fade-up" data-aos-delay="100">
+          <h2 className="mt-5" data-aos-delay="100">
             <em> {usePrivecyPolicy ? usePrivecyPolicy.page_name : ''}</em>
           </h2>
         </div>
 
         <ul className="list-unstyled mb-5 ml-5 mr-5">
-          <p data-aos="fade-up" data-aos-delay="300" className="text-start w-100 mb-4" >
+          <p data-aos-delay="300" className="text-start w-100 mb-4" >
             {usePrivecyPolicy ? usePrivecyPolicy.page_name_title : ''}
           </p>
             {useAllPrivecyPolicy && useAllPrivecyPolicy.length > 0 ? (
@@ -62,7 +63,7 @@ export default function TermCondition() {
             )}
         </ul>
       </div>
-      <Footer/>
+      </MainLayout>
     </>
   );
 }

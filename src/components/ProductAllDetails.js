@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { fetchData,apiLiveUrl } from '@/pages/fetchData';
+import { fetchData,apiLiveUrl } from '../util/fetchData';
 import { useRouter } from 'next/router';
 import { useLoader } from '../context/LoaderContext';
-import Header from '../layouts/Header';
+import MainLayout from '../layouts/MainLayout';
 
 const ProductAllDetails = () => {
     const [formData, setFormData] = useState({
@@ -30,7 +30,7 @@ const ProductAllDetails = () => {
     
     const fetchProducts = async () => { // ****** Fetch Product API Function ******* \\
       try {
-        setIsLoading(true);
+        //setIsLoading(true);
         const data = await fetchData("cart/details");
         setAllProducts(data.data || []);
         setSubtotal(parseInt(data.data[0]['cart_price']));
@@ -43,7 +43,7 @@ const ProductAllDetails = () => {
       } catch (error) {
         console.error('Error fetching products:', error);
       }finally{
-        setIsLoading(false);
+        //setIsLoading(false);
       }
     }; // ****** Fetch Product API Function End ******* \\
   
@@ -65,7 +65,7 @@ const ProductAllDetails = () => {
       setFormData(formData);
       
       try {
-        setIsLoading(true);
+        //setIsLoading(true);
         const data = await fetchData(`cart/delete`, { method: 'POST', body: formData, });
         if (data) {
           setAllProducts((prevProducts) =>
@@ -84,7 +84,7 @@ const ProductAllDetails = () => {
       } catch (error) {
         console.error("Error adding product to cart:", error);
       }finally{
-        setIsLoading(false);
+        //setIsLoading(false);
       }
     }; // ****** Remove Product API Function End ******* \\
   
@@ -130,8 +130,8 @@ const ProductAllDetails = () => {
   
     return (
         <>
-
-        <Header/>
+      
+      <MainLayout seo={{ title: 'Products' }}>
     
         <section className="agent-section pad-tb">
             <div className="border rounded shadow-lg p-3">
@@ -152,7 +152,7 @@ const ProductAllDetails = () => {
                     {allProducts.map((row, index) => (
                     <tr key={row.cart_id || index}>
                         <td className="text-start">
-                        <img src={`${apiLiveUrl}/${row.product_image_name}`} alt={`Thumbnail of ${row.title}`}
+                        <img src={`${row.product_image_name}`} alt={`Thumbnail of ${row.title}`}
                             className="img-thumbnail" style={{ width: '100px' }} />
                         </td>
                         <td className="text-start">
@@ -241,6 +241,7 @@ const ProductAllDetails = () => {
             </div>
             </div>
         </section>
+      </MainLayout>
         </>
     )
 }
